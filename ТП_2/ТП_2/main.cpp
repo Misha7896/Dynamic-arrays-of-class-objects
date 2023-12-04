@@ -25,7 +25,8 @@ int main()
                 cout << "\nMenu:" << endl;
                 cout << "1. Add student to group" << endl;
                 cout << "2. Display students with good grades" << endl;
-                cout << "3. Exit" << endl;
+                cout << "3. Delete" << endl;
+                cout << "4. Exit" << endl;
                 cout << "Enter your choice: ";
                 cin >> choice;
 
@@ -92,6 +93,26 @@ int main()
 
                 }
                 else if (choice == 3) {
+                    int groupNumber;
+                    cout << "Enter group number: ";
+                    cin >> groupNumber;
+
+                    //bool foundGroup = false;
+                    int i = 0;
+                    for (auto& group : groups) {
+                        if (group.groupNumber == groupNumber) {
+                            groups.erase(groups.begin() + i);
+                            GROUP::Count--;
+                            break;
+                        }
+                        i++;
+                    }
+
+                }
+                else if (choice == 4) {
+                    int i = (GROUP::Count - 1);
+                    for( ; i > 0; i--)
+                        groups.erase(groups.begin() + i);
                     break;
                 }
                 else {
