@@ -33,7 +33,9 @@ istream& operator>>(istream& is, STUDENT& student)
 
 STUDENT::STUDENT()
 {
+    cout << "STUDENT()" << endl;
 }
 STUDENT::~STUDENT()
 {
+    cout << "~STUDENT()" << endl;
 }

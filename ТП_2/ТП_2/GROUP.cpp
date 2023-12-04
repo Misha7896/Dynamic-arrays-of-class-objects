@@ -3,10 +3,11 @@
 GROUP::GROUP()
 {
     Count++;
+    cout << "GROUP()" << endl;
 }
 GROUP::~GROUP()
 {
-    
+    cout << "~GROUP()" << endl;
 }
 
 void GROUP::addStudent(const STUDENT& student) {

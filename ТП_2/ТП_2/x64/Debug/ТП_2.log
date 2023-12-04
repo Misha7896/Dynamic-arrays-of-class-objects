@@ -1,6 +1,4 @@
 ﻿  GROUP.cpp
-  main.cpp
-C:\Users\79284\source\repos\ТП_2\ТП_2\main.cpp(106,18): warning C4101: array: неиспользованная локальная переменная
   STUDENT.cpp
   Создание кода...
   ТП_2.vcxproj -> C:\Users\79284\source\repos\ТП_2\x64\Debug\ТП_2.exe
