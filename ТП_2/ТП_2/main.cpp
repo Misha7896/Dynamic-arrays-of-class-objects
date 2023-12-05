@@ -124,8 +124,6 @@ int main()
         }
         else if (int(c - 48) == 2)
         {
-            char array[100][100];
-
             char strin[100];
             char str[100];
 
@@ -137,14 +135,21 @@ int main()
             }
             else
             {
-                int i = 0;
-                while (fs.getline(str, 100))
+                for (int i = 0; fs.getline(str, 100); i++)
                 {
                     int kol = 0;
                     bool flag = false;
 
                     for (int j = 0, kl = 0; j < 100; j++)
                     {
+                        //char SpaceR = 'T';
+                        //char SpaceL = 'T';
+
+
+                        int SpaceR = 0;
+                        int SpaceL = 0;
+
+
                         if (!flag && strin[0] != ' ' && (str[j] == '\n' || str[j] == '\0'))
                         {
                             strin[kl] = '\n';
@@ -155,32 +160,69 @@ int main()
                             break;
                         }
 
-                        if (str[j] == ' ')
+                        if (str[j] == ' ' || str[j] == '!' || str[j] == '.' || str[j] == ',')
                         {
+                            SpaceL = j;
                             flag = true;
                             j++;
                         }
 
                         if (!flag)
+                        {
                             strin[kl] = str[j];
+                        }
 
                         kl++;
 
+                        // Пишу в консоль
                         if (flag)
                         {
+                            // Первая часть (второе слово)
                             strin[kl - 1] = '\n';
                             for (int k = j; str[k] != ' ' && str[k] != '\n' && str[k] != '\0'; k++)
                             {
-                                cout << str[k];
+                                if (str[k] == '!' || str[k] == '.' || str[k] == ',')
+                                {
+                                    SpaceR = k;
+                                    //kol++;
+                                    break;
+                                }
+                                else
+                                    cout << str[k];
                                 kol++;
                             }
 
-                            cout << ' ';
+                            if (SpaceL != 0)
+                            {
+                                {
+                                    for (int k = SpaceL; (str[k] == ' ' || str[k] == '!' || str[k] == '.' || str[k] == ',') && (str[k] != '\n' && str[k] != '\0'); k++)
+                                    {
+                                        kol++;
+                                        cout << str[k];
+                                    }
+                                    kol--;
+                                    SpaceL = 0;
+                                }
+                            }
+                            else
+                                cout << ' ';
 
+                            // Вторая часть (первое слово)
                             for (int k = 0; strin[k] != '\n'; k++)
                                 cout << strin[k];
 
-                            cout << ' ';
+                            if (SpaceR != 0)
+                            {
+                                for (int k = SpaceR; (str[k] == ' ' || str[k] == '!' || str[k] == '.' || str[k] == ',') && (str[k] != '\n' && str[k] != '\0'); k++)
+                                {
+                                    kol++;
+                                    cout << str[k];
+                                }
+                                kol--;
+                                SpaceR = 0;
+                            }
+                            else
+                                cout << ' ';
 
                             strin[0] = ' ';
                             kl = 0;
@@ -189,7 +231,6 @@ int main()
                             flag = false;
                         }
                     }
-                    i++;
                     cout << endl;
                 }
             }
