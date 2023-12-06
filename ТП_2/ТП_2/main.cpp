@@ -164,7 +164,8 @@ int main()
                         {
                             SpaceL = j;
                             flag = true;
-                            j++;
+                            for (; str[j] == ' ' || str[j] == '!' || str[j] == '.' || str[j] == ','; j++, kol--);
+                            kol++;
                         }
 
                         if (!flag)
